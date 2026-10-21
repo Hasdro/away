@@ -15,7 +15,19 @@ EyeLeo does on Windows, rebuilt native for the Mac.
 - **Pause** for 15 / 30 / 60 / 120 minutes from the menu.
 - No permissions, no network, no accounts, no Dock icon.
 
-## Install
+## Download
+
+[Away 1.0](https://github.com/Hasdro/away/releases/latest) · Apple silicon · macOS 14+
+
+Unzip `Away-1.0-macos-arm64.zip`, move `Away.app` to `Applications`, and open it.
+The build is ad-hoc signed, not notarized, so the first launch needs a
+right-click on the app → **Open**, or:
+
+```sh
+xattr -dr com.apple.quarantine /Applications/Away.app
+```
+
+## Install from source
 
 ```sh
 ./install.sh
@@ -61,6 +73,7 @@ ends; `--no-idle` ignores the away check, useful with shortened intervals:
 - One schedule, one user. No history or stats.
 - Strict mode can still be quit with ⌘Q or Force Quit. It is a commitment
   device, not a lock.
-- Apple silicon build by default (it targets the current machine's arch).
-- The app is ad-hoc signed. It runs locally; it is not notarized for
-  distribution to other Macs.
+- Apple silicon only for the current release; `build.sh` targets the machine's
+  architecture.
+- Released builds are ad-hoc signed, not notarized. macOS quarantines downloads
+  and needs the right-click → Open step (or the `xattr` command above) once.
